@@ -1,0 +1,204 @@
+﻿/* Custom styles */
+
+/*------------------------------------------------------
+[1. Global Styles]
+*/
+
+.bg-primary  {
+    background-color: #131646 !important;
+}
+.btn-primary {
+    background-color: #131646;
+}
+h2.mb-4 {
+    font-size: 1.75rem;
+}
+.text-primary-muted {
+    color: #308af7;
+}
+li.list-group-item {
+    padding: 0.5rem 1rem;
+    margin-left: 1.25rem;
+    margin-top: 0.25rem;
+}
+li.list-group-item i {
+    position: absolute;
+    left: -1.5rem;
+    margin-top: .25rem;
+}
+
+/* Project Pills */
+.media-body.project-name h6 {
+    line-height: 1.25rem;
+}
+.thumb-xl img {
+    width: 40px;
+}
+.media-body.project-name a {
+    line-height: 1rem;
+    font-size: 0.85rem;
+}
+p.project-desc {
+    line-height: 1.35rem;
+}
+p.project-image {
+    padding: 0;
+    margin: 0;
+}
+span.project-link {
+    color: #1aa248;
+}
+span.project-link:hover {
+    color: #14d856;
+    font-size: 0.9rem;
+    -webkit-transition: color 0.15s; /* For Safari 3.0 to 6.0 */
+    transition: color 0.15s; /* For modern browsers */
+}
+
+/* Resume Section */
+.text-gray-700 {
+    color: #333645 !important;
+    font-size: small;
+}
+.text-muted {
+    color: #8a8a8b!important;
+    font-size: small;
+}
+
+.bg-soft-alt-info {
+    background-color: rgb(233 240 252);
+    color: #0a2f73;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.bg-soft-alt-success {
+    background-color: rgba(105,195,128,0.1);
+    color: #0d9d32;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+/* fetherlite image popups */
+.featherlight-content .caption .title-gallery, .featherlight-content .caption .text-gallery {
+    max-width: 100vw;
+}
+h4.title-gallery {
+    font-size: large;
+}
+p.text-gallery {
+    line-height: 1.25rem;
+}
+
+
+/* All ICONS */
+#icon-toggle .ti-angle-down:before, .ti-angle-up:before{
+    font-size: 1.2rem;
+    position: relative;
+    top: 4px;
+}
+a#icon-toggle {
+    position: relative;
+    font-weight: 600;
+    font-size: 15px;
+}
+.resume-title i {
+    top: 1px;
+
+}
+
+/* Credit to Laura Thompson */
+.resume .resume-item.ul-circle ul {
+    padding-left: 1.5rem;
+    list-style-type: circle;
+}
+.resume .resume-item.ul-nostyle ul {
+    padding-left: 0;
+    list-style-type: none;
+    line-height: 1.25;
+}
+.resume .resume-item.ul-nostyle ul li {
+    margin-bottom: 0.5rem;
+}
+.resume .resume-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 30px 0 20px;
+    left: -10px;
+    position: relative;
+}
+.resume .resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #82909c;
+    position: relative;
+}
+.resume .resume-item.last-item {
+    border-bottom: 1px solid #e1e5e8
+}
+.resume .resume-item h4 {
+    line-height: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #1f81de;
+    margin-bottom: 10px;
+}
+.resume .resume-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: #fff;
+    border: 2px solid #82909c;
+}
+
+/* Portfolio, Resume, Project: Section Headers */
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #193f81;
+    position: relative;
+    z-index: 2;
+}
+.section-title {
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+}
+
+/* Animated Skill bars */
+.skills-content .progress {
+  height: 60px;
+  display: block;
+  background: none;
+  border-radius: 0;
+}
+.skills-content .progress .skill {
+  padding: 10px 0;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  display: block;
+  font-weight: 700;
+  font-family: "Raleway", sans-serif;
+  color: #3b434a;
+}
+.skills-content .progress .skill .val {
+  float: right;
+  font-style: normal;
+}
+.skills-content .progress-bar-wrap {
+  background: #e6e8eb;
+}
+.skills-content .progress-bar {
+  width: 1px;
+  height: 10px;
+  transition: 2s;
+  background-color: #193f81;
+  opacity: 1;
+}

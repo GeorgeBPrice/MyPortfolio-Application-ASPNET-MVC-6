@@ -1,0 +1,128 @@
+﻿@model PortfolioApp1.Models.EmailModel
+@{
+    Layout = "~/Views/Shared/_Contact-Layout.cshtml";
+    ViewData["Title"] = "George Price - Contact";
+    var submitSuccess = TempData["Success"] as string;
+    var submitFail = TempData["Fail"] as string;
+    var captchaFail = TempData["CaptchaError"] as string;
+}
+
+<!-- Contact Body -->
+<section id="contact" class="mt-10 pt-8 pt-xl-10 pb-10 pb-xl-10">
+    <div class="container">
+        <div class="row mb-8">
+            <div class="col-lg-8">
+                <h2 class="mb-4">Contact</h2>
+                <p>
+                    Please contact me with any questions, or if you are interested in hiring me. 
+                    I am available for face-to-face meetings in Brisbane, by phone, video, or via LinkedIn.
+                </p>
+            </div>
+        </div>
+        <!-- Contact Details -->
+        <div class="row">
+            <div class="col-lg-4 mb-8 mb-lg-0">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-lg-12 mb-5 mb-md-0 mb-lg-5">
+                        <div class="icon icon-4x text-primary-muted mb-4">
+                            <i class="ti-mobile"></i>
+                        </div>
+                        <p>0466 492 348</p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-12 mb-5 mb-md-0 mb-lg-5">
+                        <div class="icon icon-4x text-primary-muted mb-4">
+                            <i class="ti-location-pin"></i>
+                        </div>
+                        <p>
+                            Stafford QLD 4053<br />
+                            Brisbane North
+                        </p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-12">
+                        <div class="icon icon-4x text-primary-muted mb-4">
+                            <i class="ti-sharethis"></i>
+                        </div>
+                        <p>Social Contacts</p>
+                        <ul class="list-inline mb-8">
+                            <li class="list-inline-item mx-0">
+                                <a class="btn btn-sm btn-icon btn-soft-primary text-gray-600" href="https://www.linkedin.com/in/georgeprice108/" target="_blank">
+                                    <i class="fab fa-linkedin-in btn-icon-inner"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="contact-form">
+                    <!-- Messages if form submit fails or succeeds -->
+                    @if (!string.IsNullOrEmpty(submitSuccess))
+                    {
+                        <div class="alert alert-success">
+                            <p>@submitSuccess</p>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(submitFail))
+                    {
+                        <div class="alert alert-danger">
+                            <p>@submitFail</p>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(captchaFail))
+                    {
+                        <div class="alert alert-danger">
+                            <p>@captchaFail</p>
+                        </div>
+                    }
+                    <!-- Contact Page Form -->
+                    <form asp-action="Index" id="contact-form" method="post" asp-antiforgery="true">
+                        <input type="hidden" id="EmailCaptchaToken" asp-for="@Model.Token" />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="email" class="control-label"></label><span>*</span>
+                                    <input asp-for="email" class="form-control" />
+                                    <span asp-validation-for="email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="phone" class="control-label"></label>
+                                    <input asp-for="phone" class="form-control" />
+                                    <span asp-validation-for="phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="name" class="control-label"></label><span>*</span>
+                                    <input asp-for="name" class="form-control" />
+                                    <span asp-validation-for="name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="subject" class="control-label"></label>
+                                    <input asp-for="subject" class="form-control" />
+                                    <span asp-validation-for="subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="message" class="control-label"></label><span>*</span>
+                                    <textarea asp-for="message" class="form-control" rows="3"></textarea>
+                                    <span asp-validation-for="message" class="text-danger"></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Submit Form Button -->
+                            <div class="col-12 text-center text-lg-left">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

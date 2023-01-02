@@ -1,0 +1,115 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<GoogleCaptchaConfig> GoogleCaptchaConfig
+
+<!-- Contact page has greatly differing code in the Header, and also requires far less scripts to run -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/lib/themify-icons/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/css/theme.css">
+    <link rel="stylesheet" href="~/css/utilities.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/custom.css">
+</head>
+
+<body data-spy="scroll" data-target="#navbarCollapse">
+
+    <!-- Navigation Header -->
+    <nav id="siteNavbar" class="site-navbar navbar navbar-expand-lg bg-primary bg-d shadow-light fixed-top py-2 scrolled-0 navbar-dark"
+         data-navbar-base="navbar-dark" data-navbar-toggled="navbar-dark" data-navbar-scrolled="navbar-dark">
+
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/assets/images/logo-light.png" alt="" class="navbar-brand-img navbar-brand-img-light">
+            <img src="~/assets/images/logo-dark.png" alt="" class="navbar-brand-img navbar-brand-img-dark">
+        </a>
+
+        <button class="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-alternative-icon">
+                <span></span>
+            </span>
+        </button>
+
+        <!-- Navbar Menu -->
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-fragment="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-fragment="about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-fragment="skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-fragment="resume">Resume</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-fragment="portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" asp-fragment="projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                </li>
+            </ul>
+            <a class="btn btn-white d-block d-lg-inline-block ml-lg-3" href="https://www.linkedin.com/in/georgeprice108/" target="_blank"
+               rel="noopener nofollow" data-on-navbar-light="btn-primary" data-on-navbar-dark="btn-white">Linked<i class="fab fa-linkedin pl-1"></i></a>
+        </div>
+    </nav>
+
+    <!-- Contact razor view loaded here -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        @Html.Partial("_Footer")
+    </footer>
+
+    <!-- Vendor JS -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <!-- Theme / Custom JS -->
+    <script src="~/js/main.js"></script>
+
+    <!-- reCAPTCHA script to validate that user is not a spam bot -->
+    <script src="https://www.google.com/recaptcha/api.js?render=@GoogleCaptchaConfig.Value.SiteKey"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- reCAPTCHA script - callback function to handle the token -->
+    <script>
+
+        $(function() {
+            grecaptcha.ready(function () {
+                grecaptcha.execute('@GoogleCaptchaConfig.Value.SiteKey', { action: 'submit' }).then(function (token) {
+                    // test if API is correctly hooked into, and functioning
+                    document.getElementById("EmailCaptchaToken").value = token;
+                });
+            });
+        });
+
+    </script>
+
+    <!-- ASP.NET -->
+@*    @await RenderSectionAsync("Scripts", required: false)*@
+
+</body>
+</html>
